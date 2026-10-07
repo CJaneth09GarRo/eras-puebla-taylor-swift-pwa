@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+  <title id="title">Taylor Swift</title>
+  <desc id="desc">Poster estilo Eras con tonos morados y azules</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="50%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="28%" cy="18%" r="42%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.72"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="68%" cy="52%" r="40%">
+      <stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <rect width="1200" height="1600" fill="url(#glow1)"/>
+  <rect width="1200" height="1600" fill="url(#glow2)"/>
+  <circle cx="310" cy="260" r="180" fill="#ffffff" fill-opacity="0.12"/>
+  <circle cx="930" cy="550" r="220" fill="#fde68a" fill-opacity="0.18"/>
+  <rect x="80" y="110" width="1040" height="1380" rx="42" fill="none" stroke="#ffffff" stroke-opacity="0.7" stroke-width="6"/>
+  <rect x="130" y="165" width="940" height="1280" rx="32" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2"/>
+  <text x="600" y="470" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="104" font-weight="700" letter-spacing="7">TAYLOR</text>
+  <text x="600" y="580" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="104" font-weight="700" letter-spacing="7">SWIFT</text>
+  <text x="600" y="680" text-anchor="middle" fill="#fde68a" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" letter-spacing="10">THE ERA TOUR</text>
+  <text x="140" y="1378" fill="#ffffff" fill-opacity="0.82" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="8">ERAS PUEBLA</text>
+</svg>

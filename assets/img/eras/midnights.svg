@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">Midnights</title><desc id="desc">Noche azul con estrellas, luna y una pequeña llama en un encendedor.</desc>
+  <defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="#6576b4"/><stop offset=".48" stop-color="#26365d"/><stop offset="1" stop-color="#10162b"/></linearGradient></defs>
+  <rect width="700" height="900" fill="url(#g)"/><circle cx="504" cy="198" r="103" fill="#f5e5bb"/><circle cx="548" cy="167" r="98" fill="#3a4b7c"/>
+  <g fill="#fff5dc"><circle cx="135" cy="188" r="5"/><circle cx="228" cy="287" r="4"/><circle cx="573" cy="359" r="5"/><circle cx="94" cy="423" r="4"/><circle cx="468" cy="464" r="4"/></g>
+  <path d="M0 650q180-100 350 0t350-8v258H0Z" fill="#182443"/>
+  <rect x="293" y="493" width="114" height="240" rx="20" fill="#b9c6d1"/><rect x="315" y="462" width="70" height="51" rx="12" fill="#dfbd70"/><path d="M350 456q-49-39 2-86 45 45-2 86Z" fill="#ffc566"/><path d="M350 450q-20-20 2-42 17 27-2 42Z" fill="#fff5b0"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">1989</title><desc id="desc">Ilustración estilo fotografía instantánea con cielo azul y gaviotas.</desc>
+  <defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="#87d6ee"/><stop offset="1" stop-color="#4e83ab"/></linearGradient></defs>
+  <rect width="700" height="900" fill="#eadfc9"/><rect x="56" y="58" width="588" height="784" rx="12" fill="url(#g)"/>
+  <circle cx="530" cy="190" r="84" fill="#fff4cc" opacity=".9"/><path d="M56 630q110-116 210 0t218-10q86-81 160-37v259H56Z" fill="#426c7a" opacity=".5"/>
+  <g fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"><path d="m180 228 36-24 39 25 34-22 39 24"/><path d="m405 320 29-20 30 21 30-19 29 21"/></g>
+  <rect x="139" y="425" width="422" height="170" rx="16" fill="#d8e9e8" opacity=".75"/><text x="350" y="500" text-anchor="middle" fill="#253951" font-family="Arial,sans-serif" font-size="76" font-weight="700" letter-spacing="9">1989</text>
+  <text x="350" y="775" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="35" letter-spacing="11">NEW ROMANTICS</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">The Tortured Poets Department</title><desc id="desc">Composición literaria en blanco, gris y negro con hoja y trazos de tinta.</desc>
+  <rect width="700" height="900" fill="#d8d0c4"/><rect x="74" y="60" width="552" height="780" fill="#f4f0e9"/>
+  <path d="M130 150h440M130 735h440" stroke="#a79d91" stroke-width="2"/>
+  <g stroke="#c4bcb2" stroke-width="2"><path d="M132 254h436M132 292h436M132 330h436M132 368h436M132 406h436M132 444h436M132 482h436M132 520h436M132 558h436"/></g>
+  <path d="M254 190q98-54 188 5l36 96q-91-41-195 9Z" fill="#252729" opacity=".9"/><path d="M285 220q72-46 130 5l28 48q-68-22-156 7Z" fill="#e7e0d5"/>
+  <path d="M170 628q74-42 141-9t143-1q45 18 79 11" fill="none" stroke="#353535" stroke-width="5"/>
+  <text x="350" y="680" text-anchor="middle" fill="#292a2b" font-family="Georgia,serif" font-size="29" letter-spacing="3">THE TORTURED POETS</text>
+  <text x="350" y="717" text-anchor="middle" fill="#292a2b" font-family="Georgia,serif" font-size="29" letter-spacing="3">DEPARTMENT</text>
+</svg>

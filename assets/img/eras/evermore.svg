@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">evermore</title><desc id="desc">Campo otoñal en tonos ámbar con una figura de espaldas y abrigo a cuadros.</desc>
+  <defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="#d99b5a"/><stop offset=".62" stop-color="#9b613b"/><stop offset="1" stop-color="#3c342b"/></linearGradient></defs>
+  <rect width="700" height="900" fill="url(#g)"/><circle cx="527" cy="198" r="105" fill="#f8d89c" opacity=".62"/>
+  <path d="M0 607q185-90 352-9t348-35v337H0Z" fill="#775338"/><path d="M0 720q189-105 355-8t345-26v214H0Z" fill="#493b2d"/>
+  <path d="M290 432q15-94 67-92 58 3 64 100l47 284H237Z" fill="#51453e"/><path d="M291 483h128m-155 75h180m-193 76h211m-224 75h238M312 446l-27 258m91-263-9 273m75-252 12 249" stroke="#c3986d" stroke-width="16" opacity=".8"/>
+  <circle cx="357" cy="360" r="46" fill="#bb8969"/><path d="M308 357q3-80 64-66 50 11 39 76-35-22-59-55-15 34-44 45Z" fill="#5a483b"/>
+</svg>

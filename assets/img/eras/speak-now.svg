@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">Speak Now</title><desc id="desc">Ilustración original en tonos púrpura con trazos de vestido en movimiento.</desc>
+  <defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#d9a5f2"/><stop offset=".55" stop-color="#713c9b"/><stop offset="1" stop-color="#26143f"/></linearGradient></defs>
+  <rect width="700" height="900" fill="url(#g)"/><circle cx="350" cy="360" r="225" fill="#f5d9ff" opacity=".12"/>
+  <path d="M352 273c-92 0-117 74-70 117-68 96-165 187-206 342 132-76 217-60 274 44 74-115 165-95 275-26-29-164-129-259-201-356 46-78-5-121-72-121Z" fill="#c07be4" opacity=".9"/>
+  <path d="M352 270q70-63 103 4-13 69-99 85-63-16-83-80 27-62 79-9Z" fill="#f4d8be"/>
+  <path d="M71 640q163-92 260-5M361 731q113-122 257-44" fill="none" stroke="#f8dcff" stroke-width="9" opacity=".65"/>
+</svg>

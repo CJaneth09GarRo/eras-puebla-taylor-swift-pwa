@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eras Puebla · Cuenta fan de Taylor Swift</title>
+  <meta name="description" content="Explora las eras, la música y los videos de Taylor Swift en esta PWA fan hecha en Puebla.">
+  <meta name="theme-color" content="#7b2ff7">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/icon.svg">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a href="#inicio" class="logo"><img src="assets/icons/icon.svg" alt="Logo Eras Puebla" width="34" height="34"><span>Eras Puebla</span></a>
+    <button class="burger" id="burger" aria-label="Menú" aria-expanded="false">☰</button>
+    <nav id="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#eras">Eras</a>
+      <a href="#comunidad">Comunidad</a>
+      <a href="#resenas">Reseñas</a>
+      <a href="#fan-art">Fan Art</a>
+      <a href="#video">Videos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <div class="fanbar">
+    <p class="fan">✦ Cuenta fan de Taylor Swift · Puebla, México</p>
+    <p class="course"><a href="https://classroom.google.com/u/1/c/ODc2OTUwNDg5MjMy" target="_blank" rel="noopener">Aplicaciones Web Progresivas</a> · Grupo 10 B – 2026 · Docente: Mather Xóchitl Mendoza Píscil · Alumna: García Rodríguez Claudia Janeth</p>
+  </div>
+
+  <!-- Inicio: perfil biográfico que se restaura cada vez que se pulsa Inicio. -->
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-text">
+        <p class="tag" id="heroYear">De Nashville a la cima del mundo</p>
+        <h1 id="heroTitle">Taylor Swift</h1>
+        <p id="heroText">Cantautora, productora, directora y empresaria estadounidense. Desde Nashville hasta la cima del mundo, ha construido una carrera que cruza géneros y generaciones.</p>
+        <dl class="artist-facts" id="artistFacts">
+          <div><dt>Nombre completo</dt><dd>Taylor Alison Swift</dd></div>
+          <div><dt>Fecha de nacimiento</dt><dd>13 de diciembre de 1989</dd></div>
+          <div><dt>Lugar de nacimiento</dt><dd>Reading, Pennsylvania, EE.UU.</dd></div>
+          <div><dt>Géneros</dt><dd>Country, Pop, Folk, Rock Alternativo, Synth-Pop</dd></div>
+          <div><dt>Ocupación</dt><dd>Cantautora, Productora, Directora, Empresaria</dd></div>
+          <div><dt>Años activa</dt><dd>2004 – presente</dd></div>
+        </dl>
+        <a class="btn" href="#eras">Explorar eras</a>
+      </div>
+      <figure class="portrait">
+        <img id="heroImage" src="assets/img/taylor-midnights.jpg" alt="Taylor Swift en una fotografía promocional de Midnights">
+      </figure>
+    </section>
+
+    <!-- Trayectoria: biografía extendida, logros y fuentes externas. -->
+    <section id="trayectoria" class="profile">
+      <p class="tag">Su historia</p>
+      <h2>Taylor Swift: la artista que reescribió las reglas de la música</h2>
+      <p>Taylor Alison Swift es una cantautora, productora y empresaria estadounidense. Comenzó su carrera en 2006 con un álbum de estilo country y evolucionó hacia el pop con <em>Fearless</em> (2008) y <em>1989</em> (2014). A lo largo de su carrera ha publicado 12 álbumes de estudio, entre ellos <em>Folklore</em>, <em>Evermore</em>, <em>Midnights</em>, <em>The Tortured Poets Department</em> (2024) y <em>The Life of a Showgirl</em> (2025).</p>
+      <h3>Logros destacados</h3>
+      <ul class="achievement-list">
+        <li><strong>14 premios Grammy</strong>, incluidos cuatro premios a Álbum del Año, un récord para una artista.</li>
+        <li>Más de <strong>200 millones de discos vendidos</strong> en el mundo, según estimaciones difundidas por medios.</li>
+        <li><strong>The Eras Tour</strong> se convirtió en la gira más taquillera registrada, con ingresos superiores a los 2 mil millones de dólares.</li>
+        <li>Fue la primera artista en ocupar simultáneamente los diez primeros puestos del Billboard Hot 100.</li>
+        <li>Ha recibido reconocimientos de MTV, American Music Awards, Billboard y Guinness World Records.</li>
+        <li>Escribe o coescribe su discografía y ha defendido el control creativo y los derechos de los artistas.</li>
+      </ul>
+      <p>Más allá de la música, ha apoyado causas sociales y a la comunidad LGBTQ+. Su trabajo y su relación directa con sus fans —conocidos como Swifties— han inspirado a millones de personas.</p>
+      <p>En 2026 sumó tres MTV VMAs: Video of the Year por <em>The Fate of Ophelia</em>, Best Direction por <em>Opalite</em> y el primer MTV VMA Artist Director Honors. Con esos premios, llegó a 33 VMAs.</p>
+      <p class="hint">*Algunas cifras de ventas son estimaciones; la discografía y los premios pueden actualizarse. Fuentes: <a href="https://www.grammy.com/artists/taylor-swift/15450" target="_blank" rel="noopener noreferrer">Recording Academy / GRAMMY.com</a> y <a href="https://www.hellorayo.co.uk/news/music/pop/taylor-swift-awards" target="_blank" rel="noopener noreferrer">Hello Rayo: premios, actualizado en 2026</a>.</p>
+    </section>
+
+    <!-- Eras: tarjetas creadas desde el catálogo en js/app.js. -->
+    <section id="eras">
+      <p class="tag">Doce álbumes, doce mundos</p>
+      <h2>Las eras</h2>
+      <p class="hint">Selecciona una tarjeta para cambiar los colores y la ilustración de inicio. Las portadas son ilustraciones originales, no portadas oficiales.</p>
+      <div class="grid" id="erasGrid"></div>
+    </section>
+
+    <!-- Comunidad: formulario de publicación, autenticación y feed compartido con Supabase. -->
+    <section id="comunidad" class="community-section">
+      <p class="tag">Un espacio Swiftie</p>
+      <h2>Feed de la comunidad</h2>
+      <p class="hint">Comparte opiniones respetuosas sobre música y eras. Inicia sesión para publicar.</p>
+      <div class="community-auth">
+        <form id="authForm" class="community-form">
+          <label for="displayName">Nombre para mostrar (solo al registrarte)</label>
+          <input id="displayName" name="displayName" maxlength="40" autocomplete="nickname" placeholder="Tu nombre Swiftie">
+          <label for="authEmail">Correo</label>
+          <input id="authEmail" name="email" type="email" autocomplete="email" required>
+          <label for="authPassword">Contraseña</label>
+          <input id="authPassword" name="password" type="password" minlength="8" autocomplete="current-password" required>
+          <div class="form-actions">
+            <button class="btn" type="submit" name="authAction" value="signin">Iniciar sesión</button>
+            <button class="btn btn-secondary" type="submit" name="authAction" value="signup">Crear cuenta</button>
+            <button id="signOutButton" class="btn btn-secondary" type="button" hidden>Cerrar sesión</button>
+          </div>
+        </form>
+        <p id="communityStatus" class="status-message" role="status" aria-live="polite">Configura Supabase para habilitar cuentas y contenido compartido.</p>
+      </div>
+      <!-- Publicaciones de texto del feed; solo se habilita con una sesión iniciada. -->
+      <form id="communityPostForm" class="community-form" hidden>
+        <h3>Escribe una publicación</h3>
+        <label for="postTitle">Título</label>
+        <input id="postTitle" name="title" maxlength="100" required>
+        <label for="postContent">Mensaje</label>
+        <textarea id="postContent" name="content" maxlength="2000" rows="4" required></textarea>
+        <button class="btn" type="submit">Publicar</button>
+      </form>
+      <div id="communityFeed" class="community-feed" aria-live="polite"></div>
+    </section>
+
+    <!-- Reseñas: las opiniones se guardan con la identidad autenticada. -->
+    <section id="resenas" class="community-section">
+      <p class="tag">Escucha y comparte</p>
+      <h2>Reseñas de discos</h2>
+      <p class="hint">Califica un álbum y comparte una reseña. Las reseñas son públicas y solo quien las escribió puede eliminarlas.</p>
+      <form id="reviewForm" class="community-form" hidden>
+        <label for="reviewAlbum">Álbum</label>
+        <select id="reviewAlbum" name="album" required></select>
+        <label for="reviewRating">Calificación</label>
+        <select id="reviewRating" name="rating" required>
+          <option value="5">5 estrellas</option><option value="4">4 estrellas</option><option value="3">3 estrellas</option><option value="2">2 estrellas</option><option value="1">1 estrella</option>
+        </select>
+        <label for="reviewContent">Tu reseña</label>
+        <textarea id="reviewContent" name="review" minlength="10" maxlength="1500" rows="4" required></textarea>
+        <button class="btn" type="submit">Enviar reseña</button>
+      </form>
+      <div id="reviewFeed" class="community-feed" aria-live="polite"></div>
+    </section>
+
+    <!-- Fan Art: archivos se validan en el navegador y se guardan en Supabase Storage. -->
+    <section id="fan-art" class="community-section">
+      <p class="tag">Creaciones Swiftie</p>
+      <h2>Fan Art Gallery</h2>
+      <p class="hint">Sube ilustraciones, diseños, edits o videos cortos inspirados en las eras. Solo se aceptan imágenes y videos de hasta 25 MB. El contenido publicado queda visible públicamente; no subas datos personales. Publica únicamente material propio o con permiso de su creador.</p>
+      <form id="fanArtForm" class="community-form" hidden>
+        <label for="fanArtTitle">Título de la obra</label>
+        <input id="fanArtTitle" name="title" maxlength="100" required>
+        <label for="fanArtDescription">Descripción</label>
+        <textarea id="fanArtDescription" name="description" maxlength="1000" rows="3"></textarea>
+        <label for="fanArtFile">Imagen o video (máximo 25 MB)</label>
+        <input id="fanArtFile" name="media" type="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm" required>
+        <button class="btn" type="submit">Compartir Fan Art</button>
+      </form>
+      <div id="fanArtGallery" class="fan-art-grid" aria-live="polite"></div>
+    </section>
+
+    <!-- Videos: reproductores oficiales de YouTube y búsquedas comunitarias. -->
+    <section id="video">
+      <p class="tag">Música en video</p>
+      <h2>Videos oficiales</h2>
+      <p class="hint">Videos enlazados al canal oficial de Taylor Swift en YouTube. Si un video no se reproduce aquí, ábrelo desde su enlace.</p>
+      <div class="video-grid">
+        <article class="video-card"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/b1kbLwvqugk" title="Taylor Swift - Anti-Hero (Official Music Video)" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div><h3>Anti-Hero</h3><a href="https://www.youtube.com/watch?v=b1kbLwvqugk" target="_blank" rel="noopener noreferrer">Ver en YouTube</a></article>
+        <article class="video-card"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/q3zqJs7JUCQ" title="Taylor Swift - Fortnight (feat. Post Malone) (Official Music Video)" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div><h3>Fortnight (feat. Post Malone)</h3><a href="https://www.youtube.com/watch?v=q3zqJs7JUCQ" target="_blank" rel="noopener noreferrer">Ver en YouTube</a></article>
+        <article class="video-card"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/nfWlot6h_JM" title="Taylor Swift - Shake It Off" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div><h3>Shake It Off</h3><a href="https://www.youtube.com/watch?v=nfWlot6h_JM" target="_blank" rel="noopener noreferrer">Ver en YouTube</a></article>
+        <article class="video-card"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/e-ORhEE9VVg" title="Taylor Swift - Blank Space" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div><h3>Blank Space</h3><a href="https://www.youtube.com/watch?v=e-ORhEE9VVg" target="_blank" rel="noopener noreferrer">Ver en YouTube</a></article>
+        <article class="video-card"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/-BjZmE2gtdo" title="Taylor Swift - Lover (Official Music Video)" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div><h3>Lover</h3><a href="https://www.youtube.com/watch?v=-BjZmE2gtdo" target="_blank" rel="noopener noreferrer">Ver en YouTube</a></article>
+        <article class="video-card"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/K-a8s8OLBSE" title="Taylor Swift - cardigan" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div><h3>cardigan</h3><a href="https://www.youtube.com/watch?v=K-a8s8OLBSE" target="_blank" rel="noopener noreferrer">Ver en YouTube</a></article>
+        <article class="video-card"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/7EvwIw4gIyk" title="Taylor Swift - willow (Official Lyric Video)" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div><h3>willow (Lyric Video)</h3><a href="https://www.youtube.com/watch?v=7EvwIw4gIyk" target="_blank" rel="noopener noreferrer">Ver en YouTube</a></article>
+        <article class="video-card"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/VuNIsY6JdUw" title="Taylor Swift - You Belong With Me" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div><h3>You Belong With Me</h3><a href="https://www.youtube.com/watch?v=VuNIsY6JdUw" target="_blank" rel="noopener noreferrer">Ver en YouTube</a></article>
+      </div>
+      <div class="video-links">
+        <a href="https://www.youtube.com/results?search_query=Taylor+Swift+interview+official" target="_blank" rel="noopener noreferrer">Buscar entrevistas</a>
+        <a href="https://www.youtube.com/results?search_query=Taylor+Swift+Eras+Tour+official" target="_blank" rel="noopener noreferrer">Buscar videos del Eras Tour</a>
+        <a href="https://www.youtube.com/results?search_query=Taylor+Swift+fan+edits" target="_blank" rel="noopener noreferrer">Explorar edits de fans</a>
+      </div>
+    </section>
+
+    <!-- Plataformas: enlaces externos a música y videos. -->
+    <section id="plataformas" class="platforms">
+      <p class="tag">Sigue explorando</p>
+      <h2>¿Dónde ver más videos?</h2>
+      <div class="platform-grid">
+        <a href="https://www.youtube.com/@TaylorSwift" target="_blank" rel="noopener noreferrer"><strong>YouTube</strong><span>Canal oficial de Taylor Swift y videos musicales.</span></a>
+        <a href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener noreferrer"><strong>Spotify</strong><span>Escucha su música y consulta los videos disponibles en tu región.</span></a>
+        <a href="https://music.apple.com/us/artist/taylor-swift/159260351" target="_blank" rel="noopener noreferrer"><strong>Apple Music</strong><span>Explora su catálogo musical y los videos disponibles.</span></a>
+      </div>
+      <p class="hint">La disponibilidad de videos puede variar según el país y el servicio.</p>
+    </section>
+
+    <!-- Contacto e instalación: el botón abre el prompt nativo de la PWA cuando existe. -->
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Proyecto escolar de Aplicaciones Web Progresivas (10 B – 2026) · Alumna: García Rodríguez Claudia Janeth.</p>
+      <button class="btn" id="installBtn" type="button">Instalar app</button>
+      <p id="installHelp" class="hint" aria-live="polite">Instálala desde aquí si tu navegador lo permite, o usa la opción “Instalar aplicación” del menú del navegador.</p>
+    </section>
+  </main>
+
+  <footer>Cuenta fan no oficial de Puebla, México · Sin fines de lucro · Ilustraciones originales; nombres, música y marcas pertenecen a sus titulares.</footer>
+  <!-- La app principal y el módulo comunitario se documentan por responsabilidad en sus archivos JS. -->
+  <script src="js/app.js"></script>
+  <script type="module" src="js/community.js"></script>
+</body>
+</html>

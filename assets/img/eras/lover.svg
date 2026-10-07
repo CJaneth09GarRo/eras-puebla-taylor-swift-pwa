@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">Lover</title><desc id="desc">Ilustración pastel de cielo azul y rosa, nubes y corazones.</desc>
+  <defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="#ffb8df"/><stop offset=".48" stop-color="#bba8f4"/><stop offset="1" stop-color="#69c9ed"/></linearGradient></defs>
+  <rect width="700" height="900" fill="url(#g)"/><circle cx="525" cy="192" r="108" fill="#fff2c5" opacity=".85"/>
+  <g fill="#fff" opacity=".75"><ellipse cx="183" cy="311" rx="93" ry="29"/><ellipse cx="225" cy="290" rx="48" ry="43"/><ellipse cx="264" cy="312" rx="68" ry="25"/><ellipse cx="476" cy="452" rx="100" ry="27"/><ellipse cx="520" cy="431" rx="45" ry="41"/></g>
+  <path d="M350 620c-130-90-121-174-49-174 30 0 43 17 49 35 8-18 25-35 54-35 75 0 78 89-54 174Z" fill="#ff5d9b"/>
+  <path d="M0 735q174-100 350 8t350-2v159H0Z" fill="#5f7cba" opacity=".58"/>
+</svg>

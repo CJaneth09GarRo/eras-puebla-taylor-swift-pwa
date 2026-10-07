@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">Red</title><desc id="desc">Ilustración roja con perfil estilizado, sombrero y letras de alto contraste.</desc>
+  <defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#ef5260"/><stop offset=".52" stop-color="#a31f37"/><stop offset="1" stop-color="#4b1422"/></linearGradient></defs>
+  <rect width="700" height="900" fill="url(#g)"/><circle cx="525" cy="225" r="175" fill="#f5c6a6" opacity=".13"/>
+  <path d="M277 379q18-129 137-113 93 13 91 130l-35 59q-39-34-81-19-46 16-89 5l-39-62Z" fill="#291b20"/>
+  <path d="M359 338q70-40 115 26l-9 76q-24 67-87 69-55-30-53-91 3-48 34-80Z" fill="#e7b08d"/>
+  <path d="M323 478q78 27 142-7 92 89 106 286H204q16-174 119-279Z" fill="#f0d3bb"/>
+  <path d="M219 302q82-87 204-38l-24 44q-108-18-172 35Z" fill="#24171c"/><path d="M250 300q-92 12-118 43 99 3 194-22" fill="#21181b"/>
+</svg>

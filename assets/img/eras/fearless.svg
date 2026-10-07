@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">Fearless</title><desc id="desc">Ilustración dorada de una figura mirando sobre su hombro entre destellos.</desc>
+  <defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="#fff1a6"/><stop offset=".55" stop-color="#dc9b32"/><stop offset="1" stop-color="#6c351d"/></linearGradient></defs>
+  <rect width="700" height="900" fill="url(#g)"/><circle cx="540" cy="170" r="90" fill="#fff5c5" opacity=".5"/>
+  <path d="M90 710Q250 520 430 700T700 630V900H0Z" fill="#7b4926" opacity=".65"/>
+  <path d="M255 900q35-270 95-344 85-32 147 25 97 80 110 319Z" fill="#f7dc82"/><path d="M349 560q-30-110 58-141 98-34 142 59l-37 83q-74-46-153-1Z" fill="#5b3028"/>
+  <g fill="#fff4c0"><path d="m160 155 12 35 35 12-35 12-12 35-12-35-35-12 35-12z"/><path d="m524 386 8 23 23 8-23 8-8 23-8-23-23-8 23-8z"/></g>
+</svg>

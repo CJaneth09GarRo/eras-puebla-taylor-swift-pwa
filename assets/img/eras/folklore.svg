@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">folklore</title><desc id="desc">Bosque gris y neblinoso con una figura pequeña entre árboles.</desc>
+  <defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="#d1d3cf"/><stop offset="1" stop-color="#59645f"/></linearGradient></defs>
+  <rect width="700" height="900" fill="url(#g)"/><path d="M0 290q160-112 335-35t365-15v190q-168-84-350-14T0 390Z" fill="#f1f0e9" opacity=".55"/>
+  <g fill="#3e4945"><path d="M82 698 144 285l60 413Zm103 26 79-523 73 529Zm324-4 61-454 68 458Z"/></g>
+  <g fill="#64706a"><path d="m-36 690 78-398 82 405Zm509 44 70-488 77 492Z"/></g>
+  <path d="M301 740q4-95 50-95t53 95v92H301Z" fill="#242b29"/><circle cx="351" cy="629" r="23" fill="#2b302e"/>
+</svg>

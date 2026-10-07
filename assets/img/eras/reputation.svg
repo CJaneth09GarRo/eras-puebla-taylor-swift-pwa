@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">reputation</title><desc id="desc">Composición en blanco y negro con columnas tipográficas inspiradas en periódicos.</desc>
+  <rect width="700" height="900" fill="#191919"/><rect x="50" y="60" width="600" height="780" fill="#eceae5"/>
+  <text x="82" y="154" fill="#222" font-family="Georgia,serif" font-size="29" font-weight="700">THE DAILY EDITION</text><path d="M80 178h540" stroke="#333" stroke-width="4"/>
+  <g fill="#343434" opacity=".74"><path d="M82 220h145v12H82zm0 30h145v8H82zm0 24h145v8H82zm0 24h145v8H82zm0 24h145v8H82zm0 24h145v8H82z"/><path d="M472 220h145v12H472zm0 30h145v8H472zm0 24h145v8H472zm0 24h145v8H472zm0 24h145v8H472zm0 24h145v8H472z"/></g>
+  <rect x="250" y="222" width="200" height="316" fill="#b8b8b8"/><path d="M290 387q10-117 70-117t70 117l-18 29q-48-25-104 0Z" fill="#292929"/><path d="M300 460q50-45 100 0l28 78H272Z" fill="#444"/>
+  <text x="350" y="631" text-anchor="middle" fill="#111" font-family="Georgia,serif" font-size="52" font-weight="700">reputation</text>
+  <path d="M82 680h535M82 706h535M82 732h535M82 758h535M82 784h535" stroke="#777" stroke-width="5" opacity=".7"/>
+</svg>
