@@ -1,0 +1,218 @@
+[
+  {
+    "key": "taylor-swift", "name": "Taylor Swift", "year": 2006, "colorA": "#6d8b48", "colorB": "#273b2b",
+    "description": "Debut country de una compositora adolescente; historias cotidianas y una voz narrativa propia.",
+    "genre": "Country", "aesthetic": "Botas vaqueras, rizos y vestidos boho", "leadSingle": "Tim McGraw",
+    "image": "taylor-swift.svg", "alt": "Ilustración campestre verde inspirada en Taylor Swift",
+    "tracks": [
+      { "title": "Tim McGraw", "clue": "El sencillo debut que comparte nombre con un artista country." },
+      { "title": "Teardrops on My Guitar", "clue": "Una balada sobre sentimientos no correspondidos por un compañero." },
+      { "title": "Our Song", "clue": "Una pareja convierte momentos cotidianos en su propia canción." },
+      { "title": "Picture to Burn", "clue": "Un tema de ruptura con actitud desafiante y energía country." },
+      { "title": "Should've Said No", "clue": "Una canción de reproche ante una infidelidad." },
+      { "title": "A Place in This World", "clue": "Una joven busca su camino y su lugar en el mundo." },
+      { "title": "Cold as You", "clue": "Una balada sobre una relación emocionalmente distante." },
+      { "title": "Mary's Song (Oh My My My)", "clue": "Una historia de amor que recorre distintas etapas de la vida." },
+      { "title": "The Outside", "clue": "La narradora describe sentirse al margen de un grupo de amigos." },
+      { "title": "Invisible", "clue": "Una joven quiere que alguien note los sentimientos que mantiene ocultos." }
+    ]
+  },
+  {
+    "key": "fearless", "name": "Fearless", "year": 2008, "colorA": "#f5c542", "colorB": "#9a5c12",
+    "description": "Country-pop de romance juvenil que llevó sus historias a una audiencia mundial y le dio el Grammy a Álbum del Año.",
+    "genre": "Country pop", "aesthetic": "Vestidos de gala, dorado y brillo", "leadSingle": "Love Story",
+    "image": "fearless.svg", "alt": "Ilustración dorada inspirada en Fearless",
+    "tracks": [
+      { "title": "Fearless", "clue": "La canción que da nombre al álbum celebra lanzarse a una nueva relación." },
+      { "title": "Fifteen", "clue": "Un relato escolar recuerda el primer año de preparatoria." },
+      { "title": "Love Story", "clue": "Una historia romántica inspirada en Romeo y Julieta, con un final esperanzador." },
+      { "title": "Hey Stephen", "clue": "Una declaración juguetona dirigida a alguien llamado Stephen." },
+      { "title": "White Horse", "clue": "Una balada desmonta la idea de que todo romance termina como un cuento de hadas." },
+      { "title": "You Belong with Me", "clue": "Una estudiante cree que sería mejor pareja que la novia popular de un amigo." },
+      { "title": "The Way I Loved You", "clue": "La narradora compara una relación tranquila con un amor más caótico." },
+      { "title": "Forever & Always", "clue": "Una ruptura repentina cuestiona una promesa de permanencia." },
+      { "title": "Breathe", "clue": "Una despedida entre amigas duele aunque ninguna haya hecho algo malo." },
+      { "title": "The Best Day", "clue": "Un homenaje agradece a una figura familiar por acompañar distintas etapas." }
+    ]
+  },
+  {
+    "key": "speak-now", "name": "Speak Now", "year": 2010, "colorA": "#b274d2", "colorB": "#45205f",
+    "description": "Un álbum de country-pop escrito completamente por Taylor, con relatos personales y arreglos dramáticos.",
+    "genre": "Country pop", "aesthetic": "Vestidos de gala, morado y cuento de hadas", "leadSingle": "Mine",
+    "image": "speak-now.svg", "alt": "Ilustración morada inspirada en Speak Now",
+    "tracks": [
+      { "title": "Mine", "clue": "El sencillo principal imagina una relación que supera el miedo al compromiso." },
+      { "title": "Sparks Fly", "clue": "Una atracción intensa se expresa con imágenes de electricidad y lluvia." },
+      { "title": "Back to December", "clue": "Una disculpa mira hacia una relación que terminó en invierno." },
+      { "title": "Speak Now", "clue": "La protagonista interrumpe una boda para expresar lo que siente." },
+      { "title": "Dear John", "clue": "Una extensa carta musical reflexiona sobre una relación desigual." },
+      { "title": "Mean", "clue": "La respuesta a las críticas anticipa que la narradora llegará lejos." },
+      { "title": "The Story of Us", "clue": "Dos personas que fueron cercanas ahora se sienten como extrañas." },
+      { "title": "Enchanted", "clue": "Una primera reunión deja a la narradora esperando volver a ver a esa persona." },
+      { "title": "Never Grow Up", "clue": "Una canción reflexiona sobre la nostalgia de crecer y dejar la infancia." },
+      { "title": "Long Live", "clue": "Un cierre celebra los recuerdos compartidos con quienes estuvieron allí." }
+    ]
+  },
+  {
+    "key": "red", "name": "Red", "year": 2012, "colorA": "#d83a42", "colorB": "#601b27",
+    "description": "Un mapa emocional del desamor que mezcla country, rock y pop mientras prepara su transición sonora.",
+    "genre": "Country pop y pop-rock", "aesthetic": "Labios rojos, sombreros y rayas", "leadSingle": "We Are Never Ever Getting Back Together",
+    "image": "red.svg", "alt": "Ilustración roja inspirada en Red",
+    "tracks": [
+      { "title": "State of Grace", "clue": "La apertura del álbum retrata un amor intenso como una batalla." },
+      { "title": "Red", "clue": "La canción compara distintas etapas de una relación con colores." },
+      { "title": "Treacherous", "clue": "La narradora reconoce que se acerca a una relación arriesgada." },
+      { "title": "I Knew You Were Trouble", "clue": "Una relación problemática se mezcla con una producción de influencia electrónica." },
+      { "title": "All Too Well", "clue": "Un recuerdo de ruptura queda ligado a una bufanda y a muchos detalles." },
+      { "title": "22", "clue": "Una celebración pop captura la sensación de tener veintidós años." },
+      { "title": "We Are Never Ever Getting Back Together", "clue": "La narradora pone fin, con humor, al ciclo de reconciliaciones." },
+      { "title": "Begin Again", "clue": "Una nueva cita tranquila ayuda a recuperar la confianza en el amor." },
+      { "title": "The Lucky One", "clue": "Una artista observa el precio de la fama desde la historia de otra mujer." },
+      { "title": "Sad Beautiful Tragic", "clue": "Una relación terminada se recuerda con mensajes que ya no llegan." }
+    ]
+  },
+  {
+    "key": "1989", "name": "1989", "year": 2014, "colorA": "#66b6d8", "colorB": "#254b73",
+    "description": "Su primer álbum completamente pop: sintetizadores brillantes, independencia y una nueva vida en Nueva York.",
+    "genre": "Synth-pop", "aesthetic": "Polaroids, neón y estilo de los años ochenta", "leadSingle": "Shake It Off",
+    "image": "1989.svg", "alt": "Ilustración azul inspirada en 1989",
+    "tracks": [
+      { "title": "Welcome to New York", "clue": "Una bienvenida musical a una ciudad de nuevas oportunidades." },
+      { "title": "Blank Space", "clue": "Una sátira juega con la imagen pública de una pareja serial." },
+      { "title": "Style", "clue": "Una relación intermitente se describe como una estética que nunca pasa de moda." },
+      { "title": "Out of the Woods", "clue": "La narradora pregunta si una relación ya logró superar sus problemas." },
+      { "title": "Shake It Off", "clue": "Un sencillo bailable responde a las críticas dejando que pasen." },
+      { "title": "Bad Blood", "clue": "Una amistad rota inspira una canción sobre resentimiento." },
+      { "title": "Wildest Dreams", "clue": "La narradora pide permanecer en la memoria de alguien como un recuerdo idealizado." },
+      { "title": "Clean", "clue": "Una tormenta metafórica marca el momento de sentirse libre de una relación." },
+      { "title": "This Love", "clue": "Una relación que parecía perdida regresa como la marea." },
+      { "title": "New Romantics", "clue": "Un grupo de amigos convierte las heridas sentimentales en una celebración." }
+    ]
+  },
+  {
+    "key": "reputation", "name": "reputation", "year": 2017, "colorA": "#777777", "colorB": "#171717",
+    "description": "Una reinvención de pop oscuro que responde a la fama y los medios mientras reserva espacio para una historia de amor privada.",
+    "genre": "Electropop", "aesthetic": "Negro, serpientes y titulares de periódico", "leadSingle": "Look What You Made Me Do",
+    "image": "reputation.svg", "alt": "Ilustración monocromática inspirada en reputation",
+    "tracks": [
+      { "title": "...Ready For It?", "clue": "La apertura presenta una relación como una historia de acción y misterio." },
+      { "title": "End Game", "clue": "Una colaboración habla de querer ser la última relación de alguien." },
+      { "title": "I Did Something Bad", "clue": "La narradora desafía el juicio ajeno después de romper las reglas." },
+      { "title": "Don't Blame Me", "clue": "El amor se presenta con intensidad casi religiosa." },
+      { "title": "Delicate", "clue": "Una nueva relación parece frágil frente a la reputación pública." },
+      { "title": "Look What You Made Me Do", "clue": "El sencillo principal anuncia una nueva versión de la protagonista." },
+      { "title": "Getaway Car", "clue": "Una relación termina después de comenzar como una vía de escape." },
+      { "title": "Call It What You Want", "clue": "La narradora prefiere proteger un amor de las opiniones externas." },
+      { "title": "King of My Heart", "clue": "La narradora encuentra a alguien que considera su pareja ideal." },
+      { "title": "New Year's Day", "clue": "Después de una fiesta, la protagonista valora quedarse a limpiar juntos." }
+    ]
+  },
+  {
+    "key": "lover", "name": "Lover", "year": 2019, "colorA": "#ff8ad8", "colorB": "#6ec6ff",
+    "description": "Un regreso a los colores vivos que mezcla romance, independencia y observaciones sobre la vida pública.",
+    "genre": "Pop", "aesthetic": "Pasteles, corazones y arcoíris", "leadSingle": "ME!",
+    "image": "lover.svg", "alt": "Ilustración pastel inspirada en Lover",
+    "tracks": [
+      { "title": "Cruel Summer", "clue": "Un romance secreto de verano se cuenta con urgencia y sintetizadores." },
+      { "title": "Lover", "clue": "Una canción lenta imagina compartir una vida y tradiciones con alguien." },
+      { "title": "The Man", "clue": "La narradora compara cómo sería su carrera si fuera un hombre." },
+      { "title": "The Archer", "clue": "Una reflexión sobre inseguridad pregunta si alguien se quedará." },
+      { "title": "Miss Americana & the Heartbreak Prince", "clue": "Una historia de instituto funciona como alegoría política." },
+      { "title": "Paper Rings", "clue": "La protagonista dice que elegiría el amor aunque no hubiera un anillo costoso." },
+      { "title": "You Need to Calm Down", "clue": "Un sencillo pop responde a comentarios hostiles y celebra la diversidad." },
+      { "title": "Daylight", "clue": "La narradora deja atrás una visión oscura para encontrar claridad emocional." },
+      { "title": "Cornelia Street", "clue": "Una calle de Nueva York queda ligada al miedo de perder una relación." },
+      { "title": "Afterglow", "clue": "La narradora reconoce que una discusión fue causada por sus propias inseguridades." }
+    ]
+  },
+  {
+    "key": "folklore", "name": "folklore", "year": 2020, "colorA": "#9aa59a", "colorB": "#303a36",
+    "description": "Indie folk de narración íntima, creado durante la pandemia e inspirado en personajes y recuerdos ficticios.",
+    "genre": "Indie folk", "aesthetic": "Bosques, blanco y negro y tonos apagados", "leadSingle": "cardigan",
+    "image": "folklore.svg", "alt": "Ilustración de bosque neblinoso inspirada en folklore",
+    "tracks": [
+      { "title": "the 1", "clue": "La apertura imagina con serenidad qué habría pasado con una relación anterior." },
+      { "title": "cardigan", "clue": "Una prenda olvidada representa la memoria de un amor juvenil." },
+      { "title": "the last great american dynasty", "clue": "Una casa junto al mar conecta la vida de una mujer con la de la narradora." },
+      { "title": "exile", "clue": "Dos voces describen una ruptura desde perspectivas distintas." },
+      { "title": "my tears ricochet", "clue": "Una despedida combina imágenes de funeral con una traición personal." },
+      { "title": "mirrorball", "clue": "La narradora se compara con un objeto brillante que refleja a quienes lo miran." },
+      { "title": "august", "clue": "Un amor de verano se recuerda como algo hermoso pero temporal." },
+      { "title": "betty", "clue": "Un joven intenta disculparse por haber lastimado a su compañera." },
+      { "title": "illicit affairs", "clue": "Una relación secreta pierde su brillo cuando se vuelve dolorosa." },
+      { "title": "hoax", "clue": "La última canción habla de seguir unido a alguien pese a las heridas." }
+    ]
+  },
+  {
+    "key": "evermore", "name": "evermore", "year": 2020, "colorA": "#c87943", "colorB": "#493029",
+    "description": "Compañero de folklore: relatos de ficción y folk acústico con matices otoñales y colaboraciones.",
+    "genre": "Indie folk", "aesthetic": "Bosques otoñales, abrigos plaid y cottagecore", "leadSingle": "willow",
+    "image": "evermore.svg", "alt": "Ilustración otoñal inspirada en evermore",
+    "tracks": [
+      { "title": "willow", "clue": "La protagonista compara la atracción con una rama que sigue el curso del agua." },
+      { "title": "champagne problems", "clue": "Una propuesta de matrimonio recibe una respuesta inesperada durante una reunión familiar." },
+      { "title": "gold rush", "clue": "La narradora describe la belleza de alguien y decide no perseguir ese deseo." },
+      { "title": "'tis the damn season", "clue": "Al volver a su pueblo, una mujer considera una relación que dejó atrás." },
+      { "title": "tolerate it", "clue": "Una persona ofrece atención y afecto sin recibir la misma respuesta." },
+      { "title": "no body, no crime", "clue": "Una historia de misterio cuenta una venganza después de una desaparición." },
+      { "title": "ivy", "clue": "Una relación prohibida se representa con imágenes de una planta que cubre una casa." },
+      { "title": "marjorie", "clue": "Un homenaje recuerda consejos y momentos con una familiar fallecida." },
+      { "title": "cowboy like me", "clue": "Dos personas acostumbradas a engañar a otros se reconocen entre sí." },
+      { "title": "evermore", "clue": "Una colaboración describe un invierno emocional que empieza a ceder." }
+    ]
+  },
+  {
+    "key": "midnights", "name": "Midnights", "year": 2022, "colorA": "#5966a9", "colorB": "#111936",
+    "description": "Canciones pop sobre insomnio y recuerdos de distintas etapas de la vida, con producción nocturna y glam.",
+    "genre": "Synth-pop", "aesthetic": "Azul nocturno, plateado y maquillaje ahumado", "leadSingle": "Anti-Hero",
+    "image": "midnights.svg", "alt": "Ilustración nocturna inspirada en Midnights",
+    "tracks": [
+      { "title": "Lavender Haze", "clue": "La apertura rechaza la presión de definir públicamente una relación." },
+      { "title": "Maroon", "clue": "Un recuerdo de amor se pinta con tonos más oscuros que el rojo." },
+      { "title": "Anti-Hero", "clue": "La narradora reconoce sus propias inseguridades y defectos." },
+      { "title": "Snow on the Beach", "clue": "Una colaboración describe la sensación extraña de compartir un sentimiento inesperado." },
+      { "title": "You're on Your Own, Kid", "clue": "La protagonista repasa sueños juveniles y aprende a confiar en sí misma." },
+      { "title": "Midnight Rain", "clue": "Dos personas desean vidas distintas y eligen caminos diferentes." },
+      { "title": "Bejeweled", "clue": "La narradora recupera su brillo después de sentirse poco valorada." },
+      { "title": "Karma", "clue": "Una canción pop celebra que las acciones regresan a quien las realiza." },
+      { "title": "Mastermind", "clue": "La narradora admite haber planeado cuidadosamente un encuentro romántico." },
+      { "title": "Would've, Could've, Should've", "clue": "Una adulta reflexiona sobre una relación que comenzó cuando era muy joven." }
+    ]
+  },
+  {
+    "key": "tortured-poets", "name": "The Tortured Poets Department", "year": 2024, "colorA": "#d7cabb", "colorB": "#625e60",
+    "description": "Un álbum doble de 31 canciones sobre duelo, deseo y autocrítica, con imágenes literarias y producción pop.",
+    "genre": "Pop", "aesthetic": "Blanco y negro, manuscritos y estilo literario", "leadSingle": "Fortnight",
+    "image": "tortured-poets.svg", "alt": "Ilustración de papel y tinta inspirada en The Tortured Poets Department",
+    "tracks": [
+      { "title": "Fortnight", "clue": "La colaboración principal imagina un vínculo que reaparece tras muchos años." },
+      { "title": "The Tortured Poets Department", "clue": "La canción que da nombre al álbum menciona un grupo de escritores y una máquina de escribir." },
+      { "title": "My Boy Only Breaks His Favorite Toys", "clue": "Una relación se compara con un juguete que siempre termina roto." },
+      { "title": "Down Bad", "clue": "La narradora combina una ruptura con imágenes de abducción extraterrestre." },
+      { "title": "So Long, London", "clue": "Una despedida se dirige a una ciudad que fue hogar durante una relación." },
+      { "title": "But Daddy I Love Him", "clue": "La protagonista rechaza las opiniones ajenas sobre a quién puede amar." },
+      { "title": "Who's Afraid of Little Old Me?", "clue": "Una intérprete cuestiona al público que la convirtió en espectáculo." },
+      { "title": "I Can Do It with a Broken Heart", "clue": "Una artista sigue actuando con energía mientras atraviesa un momento difícil." },
+      { "title": "Guilty as Sin?", "clue": "La narradora se pregunta si imaginar una relación cuenta como una falta." },
+      { "title": "The Smallest Man Who Ever Lived", "clue": "Una ruptura inspira preguntas dirigidas a alguien que decepcionó profundamente." }
+    ]
+  },
+  {
+    "key": "showgirl", "name": "The Life of a Showgirl", "year": 2025, "colorA": "#f05b83", "colorB": "#116b75",
+    "description": "Pop brillante con imaginería de escenario, glamour teatral y contrastes entre el espectáculo y la vida privada.",
+    "genre": "Pop", "aesthetic": "Glamour teatral, telones y colores vibrantes", "leadSingle": "The Fate of Ophelia",
+    "image": "showgirl.svg", "alt": "Ilustración teatral inspirada en The Life of a Showgirl",
+    "tracks": [
+      { "title": "The Fate of Ophelia", "clue": "El sencillo principal toma como referencia a un personaje trágico de Shakespeare." },
+      { "title": "Elizabeth Taylor", "clue": "Una canción pop evoca a una estrella de Hollywood asociada al glamour clásico." },
+      { "title": "Opalite", "clue": "El título nombra una piedra iridiscente y luminosa." },
+      { "title": "Father Figure", "clue": "Una figura de autoridad y poder guía el relato de esta canción." },
+      { "title": "Eldest Daughter", "clue": "La narradora reflexiona sobre las expectativas ligadas a ser la hija mayor." },
+      { "title": "Ruin the Friendship", "clue": "La canción contempla el riesgo de cambiar una amistad por romance." },
+      { "title": "Actually Romantic", "clue": "Un gesto inesperado cambia el tono de una rivalidad." },
+      { "title": "The Life of a Showgirl", "clue": "La canción final comparte el título del álbum y presenta una colaboración con Sabrina Carpenter." },
+      { "title": "Wish List", "clue": "La narradora enumera deseos personales y aspiraciones para el futuro." },
+      { "title": "Wood", "clue": "Una canción pop juega con la superstición y la idea de tener buena suerte." }
+    ]
+  }
+]

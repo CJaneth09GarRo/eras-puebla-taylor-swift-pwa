@@ -1,24 +1,15 @@
-// Catálogo: el mismo identificador se usa en las tarjetas, las reseñas y la tabla de likes.
-const ERAS = [
-  { key: "taylor-swift", n: "Taylor Swift", y: 2006, a: "#6d8b48", b: "#273b2b", t: "El álbum debut country que presentó su voz de compositora.", image: "taylor-swift.svg", alt: "Ilustración campestre verde inspirada en Taylor Swift" },
-  { key: "fearless", n: "Fearless", y: 2008, a: "#f5c542", b: "#9a5c12", t: "Romance adolescente, brillo dorado y cuentos de hadas hechos canción.", image: "fearless.svg", alt: "Ilustración dorada inspirada en Fearless" },
-  { key: "speak-now", n: "Speak Now", y: 2010, a: "#b274d2", b: "#45205f", t: "Un álbum escrito por ella, rodeado de tonos morados y trazos dramáticos.", image: "speak-now.svg", alt: "Ilustración morada inspirada en Speak Now" },
-  { key: "red", n: "Red", y: 2012, a: "#d83a42", b: "#601b27", t: "Emociones intensas, labios rojos y una mezcla de country, rock y pop.", image: "red.svg", alt: "Ilustración roja inspirada en Red" },
-  { key: "1989", n: "1989", y: 2014, a: "#66b6d8", b: "#254b73", t: "Su salto al pop: cielo azul, estética Polaroid y sintetizadores.", image: "1989.svg", alt: "Ilustración azul inspirada en 1989" },
-  { key: "reputation", n: "reputation", y: 2017, a: "#777777", b: "#171717", t: "Blanco y negro, tipografía de periódico y una era de reinvención.", image: "reputation.svg", alt: "Ilustración monocromática inspirada en reputation" },
-  { key: "lover", n: "Lover", y: 2019, a: "#ff8ad8", b: "#6ec6ff", t: "Cielos pastel, colores brillantes y canciones sobre el amor.", image: "lover.svg", alt: "Ilustración pastel inspirada en Lover" },
-  { key: "folklore", n: "folklore", y: 2020, a: "#9aa59a", b: "#303a36", t: "Bosques neblinosos y relatos íntimos de indie folk.", image: "folklore.svg", alt: "Ilustración de bosque neblinoso inspirada en folklore" },
-  { key: "evermore", n: "evermore", y: 2020, a: "#c87943", b: "#493029", t: "Un paisaje otoñal y narraciones que continúan el universo folk.", image: "evermore.svg", alt: "Ilustración otoñal inspirada en evermore" },
-  { key: "midnights", n: "Midnights", y: 2022, a: "#5966a9", b: "#111936", t: "Noches de insomnio, luz de luna y synth-pop introspectivo.", image: "midnights.svg", alt: "Ilustración nocturna inspirada en Midnights" },
-  { key: "tortured-poets", n: "The Tortured Poets Department", y: 2024, a: "#d7cabb", b: "#625e60", t: "Una estética literaria de papel, tinta y poemas en blanco y negro.", image: "tortured-poets.svg", alt: "Ilustración de papel y tinta inspirada en The Tortured Poets Department" },
-  { key: "showgirl", n: "The Life of a Showgirl", y: 2025, a: "#f05b83", b: "#116b75", t: "Luces teatrales, telones y brillo de escenario en tonos vibrantes.", image: "showgirl.svg", alt: "Ilustración teatral inspirada en The Life of a Showgirl" }
-];
+// El catálogo y el progreso tienen persistencias distintas: SQLite remoto y IndexedDB local.
+import { localDb } from "./local-db.js";
+import { initFanTools } from "./fan-tools.js";
 
 // Utilidades y referencias a elementos compartidos por la página.
 const $ = selector => document.querySelector(selector);
 const root = document.documentElement;
 const grid = $("#erasGrid");
 const imageBase = "assets/img/eras/";
+const status = $("#catalogStatus");
+let ERAS = [];
+let fanTools;
 const homeProfile = {
   year: "De Nashville a la cima del mundo",
   title: "Taylor Swift",
@@ -26,41 +17,70 @@ const homeProfile = {
   image: "assets/img/taylor-midnights.jpg",
   alt: "Taylor Swift en una fotografía promocional de Midnights"
 };
-window.erasCatalog = ERAS;
+// Builds accessible era cards from the SQLite API response.
+function renderEras() {
+  grid.replaceChildren();
+  ERAS.forEach((era, index) => {
+    const article = document.createElement("article");
+    article.className = "era-card";
+    const button = document.createElement("button");
+    button.className = "card";
+    button.type = "button";
+    button.style.setProperty("--a", era.colorA);
+    button.style.setProperty("--b", era.colorB);
+    button.setAttribute("aria-label", `Ver la era ${era.name}, ${era.year}`);
+    const image = document.createElement("img");
+    image.src = `${imageBase}${era.image}`;
+    image.alt = era.alt;
+    image.loading = "lazy";
+    const copy = document.createElement("span");
+    copy.className = "card-copy";
+    const title = document.createElement("b");
+    title.textContent = era.name;
+    const year = document.createElement("span");
+    year.textContent = String(era.year);
+    copy.append(title, year);
+    button.append(image, copy);
+    button.addEventListener("click", () => setEra(index));
+    article.append(button);
+    grid.appendChild(article);
+  });
+  window.erasCatalog = ERAS;
+  status.textContent = "Catálogo listo.";
+}
 
-// Render de tarjetas: la selección de era y el botón de me gusta son acciones independientes.
-ERAS.forEach((era, index) => {
-  const article = document.createElement("article");
-  article.className = "era-card";
-  const button = document.createElement("button");
-  button.className = "card";
-  button.type = "button";
-  button.style.setProperty("--a", era.a);
-  button.style.setProperty("--b", era.b);
-  button.setAttribute("aria-label", `Ver la era ${era.n}, ${era.y}`);
-  button.innerHTML = `<img src="${imageBase}${era.image}" alt="${era.alt}" loading="lazy"><span class="card-copy"><b>${era.n}</b><span>${era.y}</span></span>`;
-  button.addEventListener("click", () => setEra(index));
-  const likeButton = document.createElement("button");
-  likeButton.className = "era-like";
-  likeButton.type = "button";
-  likeButton.dataset.eraKey = era.key;
-  likeButton.setAttribute("aria-label", `Me gusta la era ${era.n}`);
-  likeButton.setAttribute("aria-pressed", "false");
-  likeButton.innerHTML = `<span aria-hidden="true">♡</span> <span class="like-count">0</span>`;
-  article.append(button, likeButton);
-  grid.appendChild(article);
-});
+// Load fresh data online or the last service-worker response offline.
+async function loadEras() {
+  try {
+    const response = await fetch("./api/eras");
+    if (!response.ok) throw new Error(`API respondió ${response.status}`);
+    ERAS = await response.json();
+    if (!Array.isArray(ERAS) || ERAS.length === 0) throw new Error("La API devolvió un catálogo vacío.");
+    fanTools = await initFanTools(ERAS);
+    renderEras();
+    const savedEra = localStorage.getItem("era");
+    if (savedEra !== null && Number.isInteger(Number(savedEra)) && Number(savedEra) >= 0 && Number(savedEra) < ERAS.length) {
+      await setEra(Number(savedEra), false);
+    }
+  } catch (error) {
+    console.error("No se pudo cargar el catálogo de eras.", error);
+    status.textContent = "No se pudo cargar el catálogo. Conéctate a internet una vez o inicia el backend local.";
+    status.dataset.state = "error";
+  }
+}
+
+loadEras();
 
 // Selección de era: actualiza colores, portada, texto y preferencia local.
-function setEra(index) {
+async function setEra(index, countVisit = true) {
   const era = ERAS[index];
   if (!era) return;
 
-  root.style.setProperty("--c1", era.a);
-  root.style.setProperty("--c2", era.b);
-  $("#heroYear").textContent = `Era ${era.y}`;
-  $("#heroTitle").textContent = era.n;
-  $("#heroText").textContent = era.t;
+  root.style.setProperty("--c1", era.colorA);
+  root.style.setProperty("--c2", era.colorB);
+  $("#heroYear").textContent = `Era ${era.year}`;
+  $("#heroTitle").textContent = era.name;
+  $("#heroText").textContent = era.description;
   $("#artistFacts").hidden = true;
   const heroImage = $("#heroImage");
   heroImage.src = `${imageBase}${era.image}`;
@@ -75,9 +95,73 @@ function setEra(index) {
   } catch (error) {
     console.warn("No se pudo guardar la era seleccionada.", error);
   }
+  const visit = countVisit
+    ? await localDb.recordEraVisit(era.key)
+    : await localDb.get("eraVisits", era.key);
+  await renderEraDetails(era, visit?.count || 0);
+  if (countVisit) await fanTools?.refreshLocalSummary();
+}
+
+// Presenta el álbum, las canciones y las acciones personales de la era seleccionada.
+async function renderEraDetails(era, visitCount) {
+  const details = $("#eraDetails");
+  const heading = document.createElement("h3");
+  heading.textContent = `${era.name} · ${era.year}`;
+  const description = document.createElement("p");
+  description.textContent = era.description;
+  const metadata = document.createElement("p");
+  metadata.className = "era-metadata";
+  metadata.textContent = `Género: ${era.genre} · Estética: ${era.aesthetic} · Sencillo destacado: ${era.leadSingle}`;
+  const visits = document.createElement("p");
+  visits.className = "visit-count";
+  visits.textContent = `Has visitado esta era ${visitCount} ${visitCount === 1 ? "vez" : "veces"}.`;
+
+  const actions = document.createElement("div");
+  actions.className = "form-actions";
+  for (const [category, label] of [["era", "Era"], ["album", "Álbum"]]) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "btn btn-secondary favorite-button";
+    button.setAttribute("aria-label", `Marcar ${label.toLowerCase()} ${era.name} como favorito`);
+    await fanTools.updateFavoriteButton(button, category, era.key, era.name, era.key);
+    actions.append(button);
+  }
+
+  const songsHeading = document.createElement("h4");
+  songsHeading.textContent = `Canciones destacadas (${era.tracks.length})`;
+  const songList = document.createElement("ol");
+  songList.className = "track-list";
+  for (const track of era.tracks) {
+    const row = document.createElement("li");
+    row.className = "track-row";
+    const title = document.createElement("strong");
+    title.textContent = track.title;
+    const clue = document.createElement("p");
+    clue.textContent = track.clue;
+    const controls = document.createElement("div");
+    controls.className = "form-actions";
+    const favorite = document.createElement("button");
+    favorite.type = "button";
+    favorite.className = "btn btn-secondary favorite-button";
+    favorite.setAttribute("aria-label", `Marcar ${track.title} como favorita`);
+    await fanTools.updateFavoriteButton(favorite, "song", `${era.key}:${track.title}`, track.title, era.key);
+    const addToPlaylist = document.createElement("button");
+    addToPlaylist.type = "button";
+    addToPlaylist.className = "btn btn-secondary";
+    addToPlaylist.dataset.addTrack = "true";
+    addToPlaylist.textContent = "Añadir a playlist";
+    addToPlaylist.disabled = $("#playlistPicker").disabled;
+    addToPlaylist.addEventListener("click", () => fanTools.addTrackToPlaylist(track, era));
+    controls.append(favorite, addToPlaylist);
+    row.append(title, clue, controls);
+    songList.append(row);
+  }
+  details.replaceChildren(heading, description, metadata, visits, actions, songsHeading, songList);
+  details.hidden = false;
 }
 
 // Restablece la portada biográfica y evita que una era elegida oculte el perfil al volver a Inicio.
+// Restore the biography when the user returns to the home section.
 function showHomeProfile() {
   root.style.setProperty("--c1", "#7b2ff7");
   root.style.setProperty("--c2", "#f107a3");
@@ -91,6 +175,7 @@ function showHomeProfile() {
     card.classList.remove("on");
     card.setAttribute("aria-pressed", "false");
   });
+  $("#eraDetails").hidden = true;
   try {
     localStorage.removeItem("era");
   } catch (error) {
@@ -118,7 +203,7 @@ menu.addEventListener("click", event => {
 // Service worker: registra el nombre de archivo con la capitalización exacta para hosting sensible a mayúsculas.
 if ("serviceWorker" in navigator) {
   addEventListener("load", () => {
-    navigator.serviceWorker.register("./ServiceWorker.js").catch(error => {
+    navigator.serviceWorker.register("./ServiceWorker.js", { updateViaCache: "none" }).catch(error => {
       console.error("No se pudo registrar el service worker.", error);
     });
   });

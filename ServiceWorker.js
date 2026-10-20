@@ -1,12 +1,13 @@
 // Define versión y recursos propios necesarios para abrir la app y navegar offline.
-const CACHE = "eras-puebla-v10";
+const CACHE = "eras-puebla-v25";
+const API_CACHE = "eras-puebla-api-v1";
 const FILES = [
   "./",
   "./index.html",
   "./css/styles.css",
   "./js/app.js",
-  "./js/community.js",
-  "./js/supabase-config.js",
+  "./js/local-db.js",
+  "./js/fan-tools.js",
   "./manifest.json",
   "./assets/icons/icon.svg",
   "./assets/icons/icon-192.png",
@@ -26,24 +27,63 @@ const FILES = [
   "./assets/img/eras/showgirl.svg"
 ];
 
-// Precache crítico antes de activar la app nueva; si falla, no instala una versión incompleta.
+// Bypass an older active worker's cache, then store fresh bytes at the canonical URL.
+async function precacheFiles() {
+  const cache = await caches.open(CACHE);
+  await Promise.all(FILES.map(async file => {
+    const canonicalUrl = new URL(file, self.location.href);
+    const networkUrl = new URL(canonicalUrl);
+    networkUrl.searchParams.set("pwa-cache", CACHE);
+    const response = await fetch(networkUrl, { cache: "reload" });
+    if (!response.ok) throw new Error(`No se pudo precargar ${file}.`);
+    await cache.put(canonicalUrl, response);
+  }));
+}
+
+// Descarga la app y, si la API responde, prepara también el primer catálogo offline.
 self.addEventListener("install", event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)).then(() => self.skipWaiting()));
+  event.waitUntil(Promise.all([
+    precacheFiles(),
+    caches.open(API_CACHE).then(async cache => {
+      const request = new Request(new URL("./api/eras", self.location.href));
+      try {
+        const response = await fetch(request);
+        if (response.ok) await cache.put(request, response);
+      } catch {
+        // Si la API no está disponible, se instalarán de todos modos los recursos estáticos.
+      }
+    })
+  ]).then(() => self.skipWaiting()));
 });
 
-// Limpia cachés anteriores y toma control de las pestañas abiertas.
+// Limpia solo cachés de esta PWA y toma control de las pestañas abiertas.
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
-      keys.filter(key => key !== CACHE).map(key => caches.delete(key))
+      keys.filter(key => key.startsWith("eras-puebla-v") && key !== CACHE).map(key => caches.delete(key))
     )).then(() => self.clients.claim())
   );
 });
 
-// Cache-first en archivos locales; si falla la navegación offline, devuelve el documento inicial.
+// La API usa network-first para mostrar datos recientes y conserva la última respuesta offline.
 self.addEventListener("fetch", event => {
   const request = event.request;
-  if (request.method !== "GET" || new URL(request.url).origin !== self.location.origin) return;
+  const url = new URL(request.url);
+  if (request.method !== "GET" || url.origin !== self.location.origin) return;
+
+  if (url.pathname === new URL("./api/eras", self.location.href).pathname) {
+    event.respondWith((async () => {
+      const cache = await caches.open(API_CACHE);
+      try {
+        const response = await fetch(request);
+        if (response.ok) await cache.put(request, response.clone());
+        return response;
+      } catch {
+        return await cache.match(request) || Response.json({ error: "API sin conexión" }, { status: 503 });
+      }
+    })());
+    return;
+  }
 
   event.respondWith(
     caches.match(request).then(cached => {

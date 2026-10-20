@@ -6,7 +6,7 @@
   <title>Eras Puebla · Cuenta fan de Taylor Swift</title>
   <meta name="description" content="Explora las eras, la música y los videos de Taylor Swift en esta PWA fan hecha en Puebla.">
   <meta name="theme-color" content="#7b2ff7">
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="./manifest.json">
   <link rel="icon" href="assets/icons/icon.svg">
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
   <link rel="stylesheet" href="css/styles.css">
@@ -19,9 +19,7 @@
       <a href="#inicio">Inicio</a>
       <a href="#trayectoria">Trayectoria</a>
       <a href="#eras">Eras</a>
-      <a href="#comunidad">Comunidad</a>
-      <a href="#resenas">Reseñas</a>
-      <a href="#fan-art">Fan Art</a>
+      <a href="#mi-espacio">Mi espacio</a>
       <a href="#video">Videos</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -73,84 +71,110 @@
       <p class="hint">*Algunas cifras de ventas son estimaciones; la discografía y los premios pueden actualizarse. Fuentes: <a href="https://www.grammy.com/artists/taylor-swift/15450" target="_blank" rel="noopener noreferrer">Recording Academy / GRAMMY.com</a> y <a href="https://www.hellorayo.co.uk/news/music/pop/taylor-swift-awards" target="_blank" rel="noopener noreferrer">Hello Rayo: premios, actualizado en 2026</a>.</p>
     </section>
 
-    <!-- Eras: tarjetas creadas desde el catálogo en js/app.js. -->
+    <!-- Las tarjetas y el detalle de era se generan con los datos de SQLite. -->
     <section id="eras">
       <p class="tag">Doce álbumes, doce mundos</p>
       <h2>Las eras</h2>
-      <p class="hint">Selecciona una tarjeta para cambiar los colores y la ilustración de inicio. Las portadas son ilustraciones originales, no portadas oficiales.</p>
+      <p class="hint">Selecciona una tarjeta para ver su historia, estética y canciones. Las portadas son ilustraciones originales, no portadas oficiales.</p>
+      <p id="catalogStatus" class="hint" role="status" aria-live="polite">Cargando catálogo…</p>
       <div class="grid" id="erasGrid"></div>
+      <article id="eraDetails" class="era-details" hidden aria-live="polite"></article>
     </section>
 
-    <!-- Comunidad: formulario de publicación, autenticación y feed compartido con Supabase. -->
-    <section id="comunidad" class="community-section">
-      <p class="tag">Un espacio Swiftie</p>
-      <h2>Feed de la comunidad</h2>
-      <p class="hint">Comparte opiniones respetuosas sobre música y eras. Inicia sesión para publicar.</p>
-      <div class="community-auth">
-        <form id="authForm" class="community-form">
-          <label for="displayName">Nombre para mostrar (solo al registrarte)</label>
-          <input id="displayName" name="displayName" maxlength="40" autocomplete="nickname" placeholder="Tu nombre Swiftie">
-          <label for="authEmail">Correo</label>
-          <input id="authEmail" name="email" type="email" autocomplete="email" required>
-          <label for="authPassword">Contraseña</label>
-          <input id="authPassword" name="password" type="password" minlength="8" autocomplete="current-password" required>
-          <div class="form-actions">
-            <button class="btn" type="submit" name="authAction" value="signin">Iniciar sesión</button>
-            <button class="btn btn-secondary" type="submit" name="authAction" value="signup">Crear cuenta</button>
-            <button id="signOutButton" class="btn btn-secondary" type="button" hidden>Cerrar sesión</button>
-          </div>
-        </form>
-        <p id="communityStatus" class="status-message" role="status" aria-live="polite">Configura Supabase para habilitar cuentas y contenido compartido.</p>
+    <!-- Herramientas personales: sus registros viven en IndexedDB de este navegador. -->
+    <section id="mi-espacio" class="personal-space">
+      <p class="tag">Tu espacio Swiftie</p>
+      <h2>Herramientas personales</h2>
+      <div class="tool-tabs" role="tablist" aria-label="Herramientas personales">
+        <button id="tab-favoritos" type="button" role="tab" aria-controls="favoritos" aria-selected="true" tabindex="0" data-tool-tab="favoritos">Favoritos</button>
+        <button id="tab-quiz" type="button" role="tab" aria-controls="quiz" aria-selected="false" tabindex="-1" data-tool-tab="quiz">Quiz</button>
+        <button id="tab-temporizador" type="button" role="tab" aria-controls="temporizador" aria-selected="false" tabindex="-1" data-tool-tab="temporizador">Temporizador</button>
+        <button id="tab-playlists" type="button" role="tab" aria-controls="playlists" aria-selected="false" tabindex="-1" data-tool-tab="playlists">Playlists</button>
+        <button id="tab-adivina" type="button" role="tab" aria-controls="adivina" aria-selected="false" tabindex="-1" data-tool-tab="adivina">Adivina la canción</button>
+        <button id="tab-datos-locales" type="button" role="tab" aria-controls="datos-locales" aria-selected="false" tabindex="-1" data-tool-tab="datos-locales">Datos locales</button>
       </div>
-      <!-- Publicaciones de texto del feed; solo se habilita con una sesión iniciada. -->
-      <form id="communityPostForm" class="community-form" hidden>
-        <h3>Escribe una publicación</h3>
-        <label for="postTitle">Título</label>
-        <input id="postTitle" name="title" maxlength="100" required>
-        <label for="postContent">Mensaje</label>
-        <textarea id="postContent" name="content" maxlength="2000" rows="4" required></textarea>
-        <button class="btn" type="submit">Publicar</button>
-      </form>
-      <div id="communityFeed" class="community-feed" aria-live="polite"></div>
+
+      <article id="favoritos" class="tool-panel" role="tabpanel" aria-labelledby="tab-favoritos" tabindex="0">
+        <h3>Favoritos</h3>
+        <p id="favoriteCounts" class="hint" aria-live="polite">Cargando favoritos…</p>
+        <div id="favoriteList" class="saved-list" aria-live="polite"></div>
+      </article>
+
+      <article id="quiz" class="tool-panel" role="tabpanel" aria-labelledby="tab-quiz" tabindex="0" hidden>
+        <h3>Quiz por era</h3>
+        <p class="hint">Responde diez pistas sobre canciones. Tu mejor puntaje se guarda en este dispositivo.</p>
+        <div class="control-row">
+          <label for="quizEra">Era</label>
+          <select id="quizEra"></select>
+          <button id="startQuiz" class="btn" type="button">Iniciar quiz</button>
+        </div>
+        <p id="quizBest" class="status-message" role="status" aria-live="polite">Elige una era para consultar tu mejor puntaje.</p>
+        <form id="quizForm" class="tool-form" hidden>
+          <p id="quizProgress" class="hint"></p>
+          <p id="quizClue" class="quiz-clue"></p>
+          <label for="quizAnswer">Canción</label>
+          <input id="quizAnswer" name="answer" maxlength="100" autocomplete="off" required>
+          <button class="btn" type="submit">Responder</button>
+        </form>
+        <p id="quizResult" role="status" aria-live="polite"></p>
+      </article>
+
+      <article id="temporizador" class="tool-panel" role="tabpanel" aria-labelledby="tab-temporizador" tabindex="0" hidden>
+        <h3>Temporizador de escucha</h3>
+        <p class="hint">Mide una sesión mientras escuchas música en tu servicio favorito; esta PWA no reproduce ni detecta audio.</p>
+        <div class="control-row">
+          <label for="timerMinutes">Duración (minutos)</label>
+          <input id="timerMinutes" type="number" min="1" max="180" value="30">
+          <button id="startTimer" class="btn" type="button">Iniciar</button>
+          <button id="stopTimer" class="btn btn-secondary" type="button" hidden>Guardar y detener</button>
+        </div>
+        <p id="timerDisplay" class="timer-display" role="timer" aria-live="off">30:00</p>
+        <p id="timerTotal" class="status-message" role="status" aria-live="polite">Tiempo total: 0 min</p>
+      </article>
+
+      <article id="playlists" class="tool-panel" role="tabpanel" aria-labelledby="tab-playlists" tabindex="0" hidden>
+        <h3>Playlists personales</h3>
+        <form id="playlistForm" class="tool-form">
+          <label for="playlistName">Nombre de la playlist</label>
+          <input id="playlistName" name="name" maxlength="60" required>
+          <button class="btn" type="submit">Crear playlist</button>
+        </form>
+        <div class="control-row">
+          <label for="playlistPicker">Playlist para añadir canciones</label>
+          <select id="playlistPicker" aria-label="Playlist para añadir canciones"></select>
+        </div>
+        <p id="playlistStatus" role="status" aria-live="polite"></p>
+        <div id="playlistList" class="saved-list" aria-live="polite"></div>
+      </article>
+
+      <article id="adivina" class="tool-panel" role="tabpanel" aria-labelledby="tab-adivina" tabindex="0" hidden>
+        <h3>Adivina la canción</h3>
+        <p class="hint">Adivina con pistas descriptivas originales; no se muestran fragmentos de letras protegidas.</p>
+        <button id="newGuess" class="btn" type="button">Nueva pista</button>
+        <form id="guessForm" class="tool-form" hidden>
+          <p id="guessClue" class="quiz-clue"></p>
+          <label for="guessAnswer">Título de la canción</label>
+          <input id="guessAnswer" name="answer" maxlength="100" autocomplete="off" required>
+          <button class="btn" type="submit">Comprobar</button>
+        </form>
+        <p id="guessResult" role="status" aria-live="polite"></p>
+        <p id="guessStats" class="status-message" aria-live="polite">Canciones adivinadas: 0</p>
+      </article>
+
+      <article id="datos-locales" class="tool-panel" role="tabpanel" aria-labelledby="tab-datos-locales" tabindex="0" hidden>
+        <h3>Base de datos de este dispositivo</h3>
+        <p class="hint">Visitas, favoritos, puntajes, sesiones, playlists y canciones adivinadas se guardan en IndexedDB; no se envían al servidor.</p>
+        <p id="localDbSummary" class="status-message" role="status" aria-live="polite">Leyendo IndexedDB…</p>
+        <details id="localDataDetails" class="local-data-details">
+          <summary>Mostrar registros guardados en este navegador</summary>
+          <pre id="localDbDump" aria-live="polite"></pre>
+        </details>
+        <button id="exportLocalData" class="btn btn-secondary" type="button">Exportar copia JSON</button>
+        <p id="exportStatus" class="hint" role="status" aria-live="polite"></p>
+      </article>
     </section>
 
-    <!-- Reseñas: las opiniones se guardan con la identidad autenticada. -->
-    <section id="resenas" class="community-section">
-      <p class="tag">Escucha y comparte</p>
-      <h2>Reseñas de discos</h2>
-      <p class="hint">Califica un álbum y comparte una reseña. Las reseñas son públicas y solo quien las escribió puede eliminarlas.</p>
-      <form id="reviewForm" class="community-form" hidden>
-        <label for="reviewAlbum">Álbum</label>
-        <select id="reviewAlbum" name="album" required></select>
-        <label for="reviewRating">Calificación</label>
-        <select id="reviewRating" name="rating" required>
-          <option value="5">5 estrellas</option><option value="4">4 estrellas</option><option value="3">3 estrellas</option><option value="2">2 estrellas</option><option value="1">1 estrella</option>
-        </select>
-        <label for="reviewContent">Tu reseña</label>
-        <textarea id="reviewContent" name="review" minlength="10" maxlength="1500" rows="4" required></textarea>
-        <button class="btn" type="submit">Enviar reseña</button>
-      </form>
-      <div id="reviewFeed" class="community-feed" aria-live="polite"></div>
-    </section>
-
-    <!-- Fan Art: archivos se validan en el navegador y se guardan en Supabase Storage. -->
-    <section id="fan-art" class="community-section">
-      <p class="tag">Creaciones Swiftie</p>
-      <h2>Fan Art Gallery</h2>
-      <p class="hint">Sube ilustraciones, diseños, edits o videos cortos inspirados en las eras. Solo se aceptan imágenes y videos de hasta 25 MB. El contenido publicado queda visible públicamente; no subas datos personales. Publica únicamente material propio o con permiso de su creador.</p>
-      <form id="fanArtForm" class="community-form" hidden>
-        <label for="fanArtTitle">Título de la obra</label>
-        <input id="fanArtTitle" name="title" maxlength="100" required>
-        <label for="fanArtDescription">Descripción</label>
-        <textarea id="fanArtDescription" name="description" maxlength="1000" rows="3"></textarea>
-        <label for="fanArtFile">Imagen o video (máximo 25 MB)</label>
-        <input id="fanArtFile" name="media" type="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm" required>
-        <button class="btn" type="submit">Compartir Fan Art</button>
-      </form>
-      <div id="fanArtGallery" class="fan-art-grid" aria-live="polite"></div>
-    </section>
-
-    <!-- Videos: reproductores oficiales de YouTube y búsquedas comunitarias. -->
+    <!-- Videos externos: reproductores oficiales y enlaces a búsquedas de YouTube. -->
     <section id="video">
       <p class="tag">Música en video</p>
       <h2>Videos oficiales</h2>
@@ -194,8 +218,6 @@
   </main>
 
   <footer>Cuenta fan no oficial de Puebla, México · Sin fines de lucro · Ilustraciones originales; nombres, música y marcas pertenecen a sus titulares.</footer>
-  <!-- La app principal y el módulo comunitario se documentan por responsabilidad en sus archivos JS. -->
-  <script src="js/app.js"></script>
-  <script type="module" src="js/community.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

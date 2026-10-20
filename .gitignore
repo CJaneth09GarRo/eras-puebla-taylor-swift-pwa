@@ -1,0 +1,3 @@
+# Local database files contain device or test data; keep the eras seed JSON tracked.
+data/app.db
+data/app.db-*

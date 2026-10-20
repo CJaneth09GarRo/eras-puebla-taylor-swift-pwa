@@ -1,6 +1,6 @@
 # Eras Puebla · Taylor Swift
 
-Aplicación web progresiva (PWA) en español para explorar las eras de Taylor Swift, compartir publicaciones, reseñar discos y subir Fan Art. Proyecto escolar de Aplicaciones Web Progresivas, Grupo 10 B – 2026.
+PWA fan en español para explorar las eras de Taylor Swift y guardar herramientas personales sin cuentas ni comunidad: visitas, favoritos, quizzes, tiempo de escucha, playlists y retos.
 
 ## Estructura del proyecto
 
@@ -8,52 +8,84 @@ Aplicación web progresiva (PWA) en español para explorar las eras de Taylor Sw
 .
 |-- index.html                  # Secciones y estructura accesible de la página
 |-- manifest.json               # Nombre, iconos, colores y modo de instalación PWA
-|-- ServiceWorker.js             # Caché offline, activación y estrategia de red
+|-- ServiceWorker.js            # Recursos offline, precarga y caché de la API
+|-- sw.js                       # Puente de actualización para instalaciones antiguas
+|-- server.js                   # Backend HTTP, migración SQLite y API del catálogo
+|-- package.json                # Comandos start y test (Node.js 24+)
 |-- css/
-|   `-- styles.css              # Diseño, tarjetas, formularios y adaptación móvil
+|   `-- styles.css              # Diseño responsive y estados de las herramientas
 |-- js/
-|   |-- app.js                  # Eras, selección, navegación e instalación PWA
-|   |-- community.js            # Supabase Auth, feed, reseñas, likes y Fan Art
-|   `-- supabase-config.js      # URL y clave pública (anon/publishable) de Supabase
+|   |-- app.js                  # Catálogo, detalle de eras, visitas e instalación
+|   |-- fan-tools.js            # Favoritos, quizzes, timer, playlists, reto y exportación
+|   `-- local-db.js             # Persistencia personal en IndexedDB
+|-- data/
+|   |-- eras.json               # Datos iniciales del catálogo
+|   `-- app.db                  # SQLite local generado al iniciar (ignorado por Git)
 |-- assets/
-|   |-- icons/                  # Iconos del sitio y de la PWA
-|   `-- img/eras/               # Ilustraciones originales de las doce eras
-`-- supabase/
-    `-- schema.sql              # Tablas, restricciones, políticas RLS y bucket Fan Art
+|   |-- icons/                 # Iconos del sitio y de la PWA
+|   `-- img/eras/              # Ilustraciones originales de las doce eras
+`-- tests/
+    `-- server.test.js          # Pruebas de API, recursos y privacidad
 ```
 
 ## Ejecutar localmente
 
-Abre la carpeta en VS Code y utiliza Live Server sobre `index.html`, o ejecuta desde PowerShell en la raíz:
+Requiere Node.js 24 o posterior. Desde la carpeta del proyecto ejecuta:
 
 ```powershell
-npx serve .
+npm start
 ```
 
-Abre la URL local que muestre el servidor. Los service workers funcionan en `localhost` y en sitios HTTPS; abrir el HTML como archivo (`file://`) no es suficiente.
+Abre `http://localhost:3000`. Este servidor entrega la web y la API juntas; Live Server o `npx serve` no sirven para esta versión porque no implementan el endpoint `/api/eras`. SQLite se crea automáticamente en `data/app.db`. Puedes cambiar su ubicación definiendo `APP_DB_PATH`.
 
-## Configurar backend con Supabase
+El catálogo se consulta en `GET /api/eras`. `data/eras.json` se sincroniza a SQLite al iniciar. No hay registro, login ni endpoints de escritura públicos.
 
-Sin Supabase, el sitio y las eras siguen funcionando, pero el feed, las reseñas, los likes y las subidas quedan desactivados.
+Ejecuta las pruebas automatizadas del backend con:
 
-1. Crea un proyecto en [Supabase](https://supabase.com/).
-2. En **SQL Editor**, ejecuta el contenido completo de [`supabase/schema.sql`](./supabase/schema.sql). Este crea perfiles, publicaciones, reseñas, likes, el bucket público de imágenes/videos y las políticas de seguridad RLS. El script es re-ejecutable.
-3. En **Authentication → URL Configuration**, añade la URL local y la URL de GitHub Pages a las direcciones permitidas para redirección.
-4. Copia la URL del proyecto y la clave pública **anon/publishable** desde **Project Settings → API** a `js/supabase-config.js`.
-5. Nunca copies la clave `service_role` al frontend ni al repositorio. La clave pública solo debe usarse con las políticas RLS incluidas.
-6. En **Authentication → Providers → Email**, deja habilitado Email. Si la confirmación de correo está activada, cada persona debe confirmar su dirección antes de iniciar sesión.
-7. Prueba con dos cuentas distintas: publicaciones y reseñas deben ser públicas; cada usuario solo puede eliminar sus propias entradas y administrar sus propios archivos.
+```powershell
+npm test
+```
 
-Los archivos de Fan Art se almacenan en un bucket público para que la galería se pueda ver sin iniciar sesión. Se permiten JPG, PNG, WEBP, GIF, MP4 y WEBM hasta 25 MB. No subas archivos sin permiso; habilita moderación antes de abrir la aplicación al público.
+## Las dos bases de datos
 
-## Publicar en GitHub Pages
+**SQLite del servidor** (`data/app.db`) contiene el catálogo público: resumen, año, estética y canciones con pistas. `data/eras.json` es la fuente de datos del catálogo; editar ese JSON y reiniciar `npm start` actualiza SQLite. La API solo permite leer.
 
-1. Crea un repositorio, por ejemplo `eras-puebla-taylor-swift-pwa`.
-2. Sube todos los archivos de esta carpeta a la raíz del repositorio. Incluye `ServiceWorker.js`, `manifest.json`, `assets/` y `supabase/`.
-3. En GitHub abre **Settings → Pages**. En **Build and deployment**, selecciona **Deploy from a branch**, elige `main` y la carpeta `/(root)`, y pulsa **Save**.
-4. Espera a que GitHub Pages publique el sitio y abre la URL HTTPS que aparece en **Settings → Pages**.
-5. En Supabase, añade esa URL en las URL permitidas de autenticación y usa las mismas credenciales públicas configuradas en `js/supabase-config.js`.
-6. Abre la URL publicada en un navegador compatible y selecciona **Instalar app** o **Instalar aplicación** en el menú. En iPhone/iPad: **Compartir → Agregar a pantalla de inicio**.
+**IndexedDB del navegador** (`eras-puebla-fan`) conserva los datos personales de cada dispositivo y origen: visitas, favoritos, puntajes, sesiones, playlists y canciones adivinadas. No se envían al servidor ni se sincronizan con otros dispositivos.
+
+Para mostrar los registros locales:
+
+1. Abre **Mi espacio → Datos locales** y despliega **Mostrar registros guardados en este navegador**. Ahí aparece el JSON de cada colección.
+2. Pulsa **Exportar copia JSON** para descargar un respaldo legible.
+3. En Chrome o Edge también puedes abrir DevTools → **Application → Storage → IndexedDB → eras-puebla-fan**. Para SQLite, revisa `data/app.db` con una herramienta compatible con SQLite; no publiques ese archivo.
+
+Si borras los datos del sitio desde DevTools, se eliminan los datos personales de IndexedDB y las cachés de ese origen.
+
+## Probar las funcionalidades
+
+1. **Visitas por era:** abre **Eras**, selecciona Fearless dos veces y verifica que el detalle muestre una visita por cada selección. Recarga: el contador permanece.
+2. **Favoritos:** en el detalle marca la era, el álbum y una canción. En **Mi espacio → Favoritos** comprueba los tres contadores por categoría; quita uno y confirma que se actualice.
+3. **Quiz:** selecciona Reputation y completa diez preguntas usando las pistas del panel. Al terminar debe mostrar el puntaje `/10`; recarga y confirma que conserva tu mejor resultado.
+4. **Temporizador:** cambia la duración a 1 minuto, inicia mientras escuchas música en otra app y detén después de unos segundos. El tiempo se suma a las sesiones locales. La PWA no detecta ni reproduce audio.
+5. **Playlists:** crea una lista, cámbiale el nombre, abre una era y añade una canción. Comprueba el conteo y prueba quitarla o eliminar la lista.
+6. **Adivina la canción:** pide una pista, escribe el título y comprueba el resultado. Se guardan los intentos y aciertos; las pistas son originales y no reproducen letras protegidas.
+7. **Offline:** abre la app con internet una vez, espera a que cargue el catálogo y luego activa modo avión o DevTools → **Network → Offline**. Las eras, imágenes y datos personales deben seguir disponibles; YouTube requiere conexión.
+
+## Ver la caché
+
+En Chrome o Edge abre DevTools → **Application → Storage → Cache Storage**:
+
+- `eras-puebla-v25` (el número cambia al publicar nuevas versiones): HTML, CSS, JavaScript, manifest, iconos e ilustraciones locales.
+- `eras-puebla-api-v1`: última respuesta de `GET /api/eras`, guardada por el service worker para abrir el catálogo sin conexión.
+
+En **Application → Service Workers** puedes ver el worker activo. En **Application → Manifest** se inspecciona la configuración de instalación. DevTools → **Network** muestra la petición `/api/eras`; la respuesta viene de red con conexión y de Cache Storage cuando el dispositivo está offline.
+
+Para guardar nuevas imágenes del proyecto, agrégalas a `assets/` y también a la lista `FILES` de `ServiceWorker.js`; después aumenta la versión de `CACHE`. Las ilustraciones originales de las eras ya están incluidas y se guardan offline. Los reproductores de YouTube requieren internet.
+
+## Publicar en internet e instalar
+
+Publica el proyecto completo como servicio Node (por ejemplo en Render, Railway o un VPS), configura almacenamiento persistente para `data/app.db` y habilita HTTPS. GitHub Pages por sí solo no puede alojar este backend ni la base SQLite. Define el comando de inicio `npm start`; la plataforma proporciona `PORT` automáticamente. Si el disco del proveedor es efímero, el catálogo se vuelve a crear desde `data/eras.json`, pero los cambios manuales en SQLite se perderían.
+
+Una vez disponible por HTTPS, visita el sitio desde el navegador y elige **Instalar app** o **Instalar aplicación**. En iPhone/iPad: **Compartir → Agregar a pantalla de inicio**. En local, `localhost` también habilita service workers e instalación.
 
 Para subir cambios posteriormente: usa **Add file → Upload files** en GitHub, o haz `git add .`, `git commit -m "Describe los cambios"` y `git push`.
 
@@ -70,13 +102,17 @@ Para subir cambios posteriormente: usa **Add file → Upload files** en GitHub, 
 
 Al cambiar el nombre del sitio o un icono, actualiza el manifiesto y conserva archivos PNG en los tamaños recomendados de 192×192 y 512×512.
 
-## Cómo está documentado `ServiceWorker.js`
+## Comentarios del código
 
-El propio archivo está dividido en comentarios numerados por responsabilidad:
+Los módulos JS explican su responsabilidad y las operaciones importantes; `index.html` agrupa las secciones con comentarios, y `styles.css` divide los estilos por área. JSON no admite comentarios: el catálogo y el manifest se explican en esta guía.
 
-1. `CACHE` y `FILES`: versión del caché y lista de recursos locales precargados.
-2. Evento `install`: descarga los archivos críticos y solo activa la versión si todos se guardaron.
-3. Evento `activate`: elimina cachés antiguos y toma control de la página.
-4. Evento `fetch`: usa caché para archivos locales y devuelve `index.html` si una navegación falla sin conexión.
+## Cómo funciona `ServiceWorker.js`
 
-Al añadir o renombrar un archivo esencial, actualiza `FILES` y aumenta el identificador `CACHE` para que los navegadores instalen la nueva versión. YouTube y las funciones de Supabase necesitan conexión; el sitio base y sus imágenes locales se guardan para uso sin conexión.
+El archivo gestiona:
+
+1. `CACHE` y `FILES`: versión y archivos estáticos que se precargan.
+2. `API_CACHE`: caché separada para las respuestas de la API.
+3. `install` y `activate`: precarga recursos, limpia versiones anteriores de recursos y controla la pestaña.
+4. `fetch`: actualiza el catálogo desde la red y usa la última respuesta guardada cuando no hay conexión.
+
+Al añadir o renombrar una imagen local, actualiza `FILES` y aumenta `CACHE`. La primera carga del catálogo requiere conexión al backend; después queda cacheado para uso offline. YouTube requiere conexión.
