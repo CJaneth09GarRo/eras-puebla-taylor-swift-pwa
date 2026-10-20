@@ -74,7 +74,7 @@ Si borras los datos del sitio desde DevTools, se eliminan los datos personales d
 
 En Chrome o Edge abre DevTools → **Application → Storage → Cache Storage**:
 
-- `eras-puebla-v25` (el número cambia al publicar nuevas versiones): HTML, CSS, JavaScript, manifest, iconos e ilustraciones locales.
+- `eras-puebla-v26` (el número cambia al publicar nuevas versiones): HTML, CSS, JavaScript, manifest, iconos e ilustraciones locales.
 - `eras-puebla-api-v1`: última respuesta de `GET /api/eras`, guardada por el service worker para abrir el catálogo sin conexión.
 
 En **Application → Service Workers** puedes ver el worker activo. En **Application → Manifest** se inspecciona la configuración de instalación. DevTools → **Network** muestra la petición `/api/eras`; la respuesta viene de red con conexión y de Cache Storage cuando el dispositivo está offline.

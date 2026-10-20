@@ -140,6 +140,14 @@ async function renderEraDetails(era, visitCount) {
     clue.textContent = track.clue;
     const controls = document.createElement("div");
     controls.className = "form-actions";
+    const youtubeLink = document.createElement("a");
+    const youtubeQuery = new URLSearchParams({ search_query: `Taylor Swift ${era.name} ${track.title} official audio` });
+    youtubeLink.href = `https://www.youtube.com/results?${youtubeQuery}`;
+    youtubeLink.target = "_blank";
+    youtubeLink.rel = "noopener noreferrer";
+    youtubeLink.className = "song-youtube-link";
+    youtubeLink.textContent = "Buscar y reproducir en YouTube";
+    youtubeLink.setAttribute("aria-label", `Buscar ${track.title} de ${era.name} en YouTube`);
     const favorite = document.createElement("button");
     favorite.type = "button";
     favorite.className = "btn btn-secondary favorite-button";
@@ -152,7 +160,7 @@ async function renderEraDetails(era, visitCount) {
     addToPlaylist.textContent = "Añadir a playlist";
     addToPlaylist.disabled = $("#playlistPicker").disabled;
     addToPlaylist.addEventListener("click", () => fanTools.addTrackToPlaylist(track, era));
-    controls.append(favorite, addToPlaylist);
+    controls.append(youtubeLink, favorite, addToPlaylist);
     row.append(title, clue, controls);
     songList.append(row);
   }
