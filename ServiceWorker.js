@@ -1,5 +1,5 @@
 // Define versión y recursos propios necesarios para abrir la app y navegar offline.
-const CACHE = "eras-puebla-v25";
+const CACHE = "eras-puebla-v26";
 const API_CACHE = "eras-puebla-api-v1";
 const FILES = [
   "./",
